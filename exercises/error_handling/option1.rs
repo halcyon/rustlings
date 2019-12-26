@@ -9,15 +9,25 @@
 pub fn pop_too_much() -> bool {
     let mut list = vec![3];
 
-    let last = list.pop().unwrap();
-    println!("The last item in the list is {:?}", last);
+    let last: i16 =
+        match list.pop() {
+            None => None,
+            Some(i) => i
+        };
+    // let last = list.pop().unwrap();
 
-    let second_to_last = list.pop().unwrap();
-    println!(
-        "The second-to-last item in the list is {:?}",
-        second_to_last
-    );
+    // if let Some(list.pop()) = last_one {
+    //     println!("The last item in the list is {:?}", last_one);
+    // }
+
+    // if let Some(list.pop()) = second_to_last {
+    //   println!(
+    //     "The second-to-last item in the list is {:?}",
+    //     second_to_last
+    //   );
+    // }
     true
+
 }
 
 #[cfg(test)]
