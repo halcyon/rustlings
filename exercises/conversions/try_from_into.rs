@@ -28,6 +28,14 @@ struct Person {
 impl TryFrom<&str> for Person {
     type Error = String;
     fn try_from(s: &str) -> Result<Self, Self::Error> {
+        match s.split(",").collect::<Vec<&str>>().as_slice() {
+            [v0, v1] =>
+                match v1.parse::<usize>() {
+                    Ok(age) => return Ok(Person { name: v0.to_string(), age: age }),
+                    Err(e) => return Err(e.to_string()),
+                },
+            _ => Err("Default".to_string())
+        }
     }
 }
 
